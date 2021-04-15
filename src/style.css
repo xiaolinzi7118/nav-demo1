@@ -150,9 +150,14 @@ body{
     position: absolute;
     right: 10px;
     top: 5px;
-    display: none;
     cursor: default;
 }
-.siteList .site:hover > .close {
-    display: block;
+
+@media (min-width: 500px) {
+    .siteList .site > .close{
+        display: none;
+    }
+    .siteList .site:hover > .close {
+        display: block;
+    }
 }
