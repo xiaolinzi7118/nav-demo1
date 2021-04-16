@@ -60,16 +60,29 @@
     const string = JSON.stringify($16b5ad875ae907e2f7f79e7b8fe116cc$var$hashMap);
     localStorage.setItem('x', string);
   };
-  $(document).on('keypress', e => {
-    // const key=e.key;可以简写
-    const {key} = e;
-    for (let i = 0; i < $16b5ad875ae907e2f7f79e7b8fe116cc$var$hashMap.length; i++) {
-      if ($16b5ad875ae907e2f7f79e7b8fe116cc$var$hashMap[i].logo.toLowerCase() === key) {
-        // toLowerCase变为小写
-        window.open($16b5ad875ae907e2f7f79e7b8fe116cc$var$hashMap[i].url);
+  let $16b5ad875ae907e2f7f79e7b8fe116cc$var$judge = false;
+  function $16b5ad875ae907e2f7f79e7b8fe116cc$var$keyP(e) {
+    if ($16b5ad875ae907e2f7f79e7b8fe116cc$var$judge === false) {
+      // const key=e.key;可以简写
+      const {key} = e;
+      e.stopPropagation();
+      for (let i = 0; i < $16b5ad875ae907e2f7f79e7b8fe116cc$var$hashMap.length; i++) {
+        if ($16b5ad875ae907e2f7f79e7b8fe116cc$var$hashMap[i].logo.toLowerCase() === key) {
+          // toLowerCase变为小写
+          window.open($16b5ad875ae907e2f7f79e7b8fe116cc$var$hashMap[i].url);
+        }
       }
     }
+  }
+  $(document).on('keypress', $16b5ad875ae907e2f7f79e7b8fe116cc$var$keyP);
+  $('input').keydown(e => {
+    $16b5ad875ae907e2f7f79e7b8fe116cc$var$judge = true;
+  });
+  $('input').on('blur', e => {
+    console.log(111);
+    $16b5ad875ae907e2f7f79e7b8fe116cc$var$judge = false;
+    console.log($16b5ad875ae907e2f7f79e7b8fe116cc$var$judge);
   });
 })();
 
-//# sourceMappingURL=index.3fd9d000.js.map
+//# sourceMappingURL=index.a2105cb9.js.map

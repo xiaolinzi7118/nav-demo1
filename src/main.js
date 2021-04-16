@@ -60,14 +60,30 @@ window.onbeforeunload = () => {
     localStorage.setItem('x', string);
 }
 
+let judge = false;
 
-$(document).on('keypress', (e) => {
-    // const key=e.key;可以简写
-    const { key } = e;
-    for (let i = 0; i < hashMap.length; i++) {
-        if (hashMap[i].logo.toLowerCase() === key) {
-            //toLowerCase变为小写
-            window.open(hashMap[i].url)
+function keyP(e) {
+    if (judge === false) {
+        // const key=e.key;可以简写
+        const { key } = e;
+        e.stopPropagation()
+        for (let i = 0; i < hashMap.length; i++) {
+            if (hashMap[i].logo.toLowerCase() === key) {
+                //toLowerCase变为小写
+                window.open(hashMap[i].url)
+            }
         }
     }
+}
+
+$(document).on('keypress', keyP)
+
+$('input').keydown((e) => {
+    judge = true;
+})
+
+$('input').on('blur', (e) => {
+    console.log(111)
+    judge = false;
+    console.log(judge)
 })
