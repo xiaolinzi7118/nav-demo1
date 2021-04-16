@@ -83,7 +83,5 @@ $('input').keydown((e) => {
 })
 
 $('input').on('blur', (e) => {
-    console.log(111)
     judge = false;
-    console.log(judge)
 })
